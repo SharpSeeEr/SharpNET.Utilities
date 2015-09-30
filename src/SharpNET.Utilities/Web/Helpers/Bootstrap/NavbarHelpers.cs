@@ -20,6 +20,16 @@ namespace SharpNET.Utilities.Web.Helpers.Bootstrap
             li.AppendHtml(htmlHelper.ActionLink(label, actionName, controllerName).ToString());
             return li;
         }
+
+        public static HtmlTag NavItem(this HtmlHelper htmlHelper, string label, string actionName)
+        {
+            string cssClass = actionName.StartsWith(htmlHelper.ViewContext.RouteData.Values["action"].ToString()) ? "active" : "";
+
+            var li = new HtmlTag("li")
+                .AddClass(cssClass);
+            li.AppendHtml(htmlHelper.ActionLink(label, actionName).ToString());
+            return li;
+        }
     }
 
 

@@ -25,7 +25,7 @@ namespace SharpNET.Utilities.Web.Helpers
 
             Metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             //HtmlId = Metadata.
-            Model = (TProperty)Metadata.Model;
+            if (Metadata.Model != null) Model = (TProperty)Metadata.Model;
             Label = Metadata.DisplayName ?? Metadata.PropertyName;
         }
     }
