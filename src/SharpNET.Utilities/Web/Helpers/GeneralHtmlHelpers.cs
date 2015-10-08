@@ -24,9 +24,20 @@ namespace SharpNET.Utilities.Web.Helpers
             return new HtmlTag("span").AddClass("glyphicon").AddClass("glyphicon-" + icon);
         }
 
-        public static HtmlTag FontAwesome(this HtmlHelper htmlHelper, string icon)
+        public static HtmlTag FontAwesome(this HtmlHelper htmlHelper, string icon, params string[] options)
         {
-            return new HtmlTag("span").AddClass("fa").AddClass("fa-" + icon);
+            var tag = new HtmlTag("span").AddClass("fa").AddClass(FAPrefix(icon));
+            foreach (var item in options)
+            {
+                tag.AddClass(FAPrefix(item));
+            }
+            return tag;
+        }
+
+        private static string FAPrefix(string text)
+        {
+            if (text.StartsWith("fa-")) return text;
+            return "fa-" + text;
         }
     }
 }
