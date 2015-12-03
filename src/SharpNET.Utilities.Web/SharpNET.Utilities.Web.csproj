@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="SharpNET.Utilities.Web.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpNET.Utilities\SharpNET.Utilities.csproj">

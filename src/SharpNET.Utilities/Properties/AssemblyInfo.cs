@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SharpNET.Utilities")]
-[assembly: AssemblyDescription("A handy collectionof utilities for general coding and MVC sites")]
+[assembly: AssemblyDescription("A handy collection of utilities for general coding")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Aaron Throckmorton")]
 [assembly: AssemblyProduct("SharpNET.Utilities")]

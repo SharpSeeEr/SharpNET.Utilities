@@ -10,8 +10,8 @@
     <projectUrl>https://github.com/SharpSeeEr/SharpNET.Utilities</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Removed references to MVC and other web related packages</releaseNotes>
+    <releaseNotes>New package containing only utilites for use in web projects</releaseNotes>
     <copyright>Copyright 2015</copyright>
-    <tags>Utilities</tags>
+    <tags>Utilities MVC Web</tags>
   </metadata>
 </package>
