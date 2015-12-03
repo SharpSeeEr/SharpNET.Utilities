@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities", "SharpNET.Utilities\SharpNET.Utilities.csproj", "{A4DCD5C5-0D5A-430C-BC6B-B1001015791F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.Web", "SharpNET.Utilities.Web\SharpNET.Utilities.Web.csproj", "{898CF253-8E2B-464A-8727-C73257BC78BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A4DCD5C5-0D5A-430C-BC6B-B1001015791F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4DCD5C5-0D5A-430C-BC6B-B1001015791F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4DCD5C5-0D5A-430C-BC6B-B1001015791F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{898CF253-8E2B-464A-8727-C73257BC78BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{898CF253-8E2B-464A-8727-C73257BC78BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{898CF253-8E2B-464A-8727-C73257BC78BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{898CF253-8E2B-464A-8727-C73257BC78BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
