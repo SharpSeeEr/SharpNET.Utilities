@@ -50,11 +50,13 @@
     <Compile Include="Encryption\EncryptionManager.cs" />
     <Compile Include="EnumExtensions.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="ICollectionExtensions.cs" />
     <Compile Include="IOrderedQueryableExtensions.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="Net\PingerOptions.cs" />
     <Compile Include="Net\Pinger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\PropertyInfoMap.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>

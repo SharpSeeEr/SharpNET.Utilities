@@ -21,6 +21,7 @@ namespace SharpNET.Utilities
 
         public static string StripNonDigits(this string source)
         {
+            if (string.IsNullOrEmpty(source)) return source;
             return new string(source.Where(char.IsDigit).ToArray());
         }
 
@@ -28,11 +29,12 @@ namespace SharpNET.Utilities
         {
             if (string.IsNullOrEmpty(source)) return "";
 
-            source = source.StripNonDigits();
-            long phone = Convert.ToInt64(source);
-            if (source.Length == 10) return string.Format("{0:(###) ###-####}", phone);
-            if (source.Length == 7) return string.Format("{0:###-####}", phone);
-            if (source.Length > 10) return string.Format("{0:+### ## ###-###-####}", phone);
+            var number = source.StripNonDigits();
+            long phone;
+            if (!long.TryParse(number, out phone)) return source;
+            if (number.Length == 10) return string.Format("{0:(###) ###-####}", phone);
+            if (number.Length == 7) return string.Format("{0:###-####}", phone);
+            if (number.Length > 10) return string.Format("{0:+### ## ###-###-####}", phone);
             return source;
         }
     }

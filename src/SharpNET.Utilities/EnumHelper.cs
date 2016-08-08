@@ -65,6 +65,10 @@ namespace SharpNET.Utilities
 
         public static string GetDisplayValue(T value)
         {
+            if (!_enumStringValueMap.ContainsKey(value.ToString()))
+            {
+                throw new Exception(string.Format("Invalid Enum value {0}:{1}. Valid values are: {2}", value, value.ToString(), string.Join(", ", Enum.GetValues(_enumType))));
+            }
             return _enumStringValueMap[value.ToString()].Display;
         }
 

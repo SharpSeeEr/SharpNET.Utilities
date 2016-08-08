@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/SharpSeeEr/SharpNET.Utilities</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>New package containing only utilites for use in web projects</releaseNotes>
+    <releaseNotes>Added a XmlResult type for MVC Controllers that serialized objects to xml and returns the xml</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>Utilities MVC Web</tags>
   </metadata>

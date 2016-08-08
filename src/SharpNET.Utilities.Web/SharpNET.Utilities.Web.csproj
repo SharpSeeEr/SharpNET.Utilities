@@ -38,7 +38,12 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -80,10 +85,14 @@
     <Compile Include="Helpers\DisposableHtmlHelper.cs" />
     <Compile Include="Helpers\GeneralHtmlHelpers.cs" />
     <Compile Include="Helpers\HtmlHelperInfo.cs" />
+    <Compile Include="MVC\JsonNetController.cs" />
+    <Compile Include="MVC\JsonNetResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tags\BsCheckboxTag.cs" />
     <Compile Include="Tags\BsRadioTag.cs" />
     <Compile Include="Tags\RadioTag.cs" />
+    <Compile Include="MVC\XmlResult.cs" />
+    <Compile Include="Validation\RequiredChecked.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -94,6 +103,9 @@
       <Project>{a4dcd5c5-0d5a-430c-bc6b-b1001015791f}</Project>
       <Name>SharpNET.Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\sharpnet.validation.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,74 +2,111 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace SharpNET.Utilities
 {
     public static class IQueryableExtensions
     {
-        private static IOrderedQueryable<T> OrderingHelper<T>(IQueryable<T> source, OrderByProperty orderbyProp, bool anotherLevel)
+        public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> enumerable, string orderBy)
         {
-            ParameterExpression param = Expression.Parameter(typeof(T), string.Empty); // I don't care about some naming
-            MemberExpression property = Expression.PropertyOrField(param, orderbyProp.PropertyName);
-            LambdaExpression sort = Expression.Lambda(property, param);
-
-            MethodCallExpression call = Expression.Call(
-                typeof(Queryable),
-                (!anotherLevel ? "OrderBy" : "ThenBy") + (orderbyProp.Descending ? "Descending" : string.Empty),
-                new[] { typeof(T), property.Type },
-                source.Expression,
-                Expression.Quote(sort));
-
-            return (IOrderedQueryable<T>)source.Provider.CreateQuery<T>(call);
+            return enumerable.AsQueryable().OrderBy(orderBy).AsEnumerable();
         }
 
-        private static IOrderedQueryable<T> ProcessOrderBy<T>(IQueryable<T> source, string orderby, bool anotherLevel)
+        public static IQueryable<T> OrderBy<T>(this IQueryable<T> collection, string orderBy)
         {
-            var props = new OrderByProperties(orderby);
-            IOrderedQueryable<T> query = (IOrderedQueryable<T>)source;
-            
-            foreach (var item in props)
+            foreach (var orderByInfo in ParseOrderBy(orderBy))
+                collection = ApplyOrderBy<T>(collection, orderByInfo);
+
+            return collection;
+        }
+
+        private static IOrderedQueryable<T> ApplyOrderBy<T>(IQueryable<T> collection, OrderByInfo orderByInfo)
+        {
+            string[] props = orderByInfo.PropertyName.Split('.');
+            Type type = typeof(T);
+
+            ParameterExpression arg = Expression.Parameter(type, "x");
+            Expression expr = arg;
+            foreach (string prop in props)
             {
-                query = OrderingHelper(query, item, anotherLevel);
-                anotherLevel = true;
+                // use reflection (not ComponentModel) to mirror LINQ
+                PropertyInfo pi = type.GetProperty(prop);
+                expr = Expression.Property(expr, pi);
+                type = pi.PropertyType;
             }
-            return query;
-        }
+            Type delegateType = typeof(Func<,>).MakeGenericType(typeof(T), type);
+            LambdaExpression lambda = Expression.Lambda(delegateType, expr, arg);
+            string methodName = String.Empty;
 
-        public static IOrderedQueryable<T> OrderBy<T>(this IQueryable<T> source, string orderby)
-        {
-
-            return ProcessOrderBy(source, orderby, false);
-        }
-
-        public static IOrderedQueryable<T> ThenBy<T>(this IOrderedQueryable<T> source, string orderby)
-        {
-            return ProcessOrderBy(source, orderby, true);
-        }
-
-        private class OrderByProperties : List<OrderByProperty>
-        {
-            public OrderByProperties(string orderby)
+            if (!orderByInfo.Initial && collection is IOrderedQueryable<T>)
             {
-                string[] properties = orderby.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var item in properties)
-                {
-                    Add(new OrderByProperty(item));
-                }
+                if (orderByInfo.Direction == SortDirection.Ascending)
+                    methodName = "ThenBy";
+                else
+                    methodName = "ThenByDescending";
             }
+            else
+            {
+                if (orderByInfo.Direction == SortDirection.Ascending)
+                    methodName = "OrderBy";
+                else
+                    methodName = "OrderByDescending";
+            }
+
+            //TODO: apply caching to the generic methodsinfos?
+            return (IOrderedQueryable<T>)typeof(Queryable).GetMethods().Single(
+                method => method.Name == methodName
+                        && method.IsGenericMethodDefinition
+                        && method.GetGenericArguments().Length == 2
+                        && method.GetParameters().Length == 2)
+                .MakeGenericMethod(typeof(T), type)
+                .Invoke(null, new object[] { collection, lambda });
+
         }
 
-        private class OrderByProperty
+        private static IEnumerable<OrderByInfo> ParseOrderBy(string orderBy)
         {
-            public string PropertyName { get; private set; }
-            public bool Descending { get; private set; }
+            if (String.IsNullOrEmpty(orderBy))
+                yield break;
 
-            public OrderByProperty(string field)
+            string[] items = orderBy.Split(',');
+            bool initial = true;
+            foreach (string item in items)
             {
-                string[] parts = field.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                PropertyName = parts[0];
-                Descending = parts.Length > 1 && parts[1].ToLower().StartsWith("desc");
+                string[] pair = item.Trim().Split(' ');
+
+                if (pair.Length > 2)
+                    throw new ArgumentException(String.Format("Invalid OrderBy string '{0}'. Order By Format: Property, Property2 ASC, Property2 DESC", item));
+
+                string prop = pair[0].Trim();
+
+                if (String.IsNullOrEmpty(prop))
+                    throw new ArgumentException("Invalid Property. Order By Format: Property, Property2 ASC, Property2 DESC");
+
+                SortDirection dir = SortDirection.Ascending;
+
+                if (pair.Length == 2)
+                    dir = ("desc".Equals(pair[1].Trim(), StringComparison.OrdinalIgnoreCase) ? SortDirection.Descending : SortDirection.Ascending);
+
+                yield return new OrderByInfo() { PropertyName = prop, Direction = dir, Initial = initial };
+
+                initial = false;
             }
+
+        }
+
+        private class OrderByInfo
+        {
+            public string PropertyName { get; set; }
+            public SortDirection Direction { get; set; }
+            public bool Initial { get; set; }
+        }
+
+        private enum SortDirection
+        {
+            Ascending = 0,
+            Descending = 1
         }
     }
 }
