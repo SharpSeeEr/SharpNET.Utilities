@@ -47,9 +47,18 @@ namespace SharpNET.Utilities
                     yield return value;
         }
 
-        public static T Parse(string value)
+        public static bool Contains(string value)
         {
-            if (string.IsNullOrEmpty(value) || !_enumStringValueMap.ContainsKey(value)) return _enumStringValueMap.Values.First().Value;
+            return _enumStringValueMap.ContainsKey(value);
+        }
+
+        public static T Parse(string value, bool mustExist = false)
+        {
+            if (string.IsNullOrEmpty(value) || !_enumStringValueMap.ContainsKey(value))
+            {
+                if (mustExist) throw new KeyNotFoundException();
+                return _enumStringValueMap.Values.First().Value;
+            }
             return _enumStringValueMap[value].Value;
         }
 
@@ -127,8 +136,8 @@ namespace SharpNET.Utilities
                 EnumValue = (Enum)rawValue;
                 NumericValue = (int)rawValue;
                 Name = value.ToString();
+                Display = Name.FromCamelCase();
                 DisplayAttribute = fieldInfo.GetCustomAttribute<DisplayAttribute>(false);
-                Display = Name;
                 if (DisplayAttribute != null && DisplayAttribute.Name != null) Display = DisplayAttribute.Name;
             }
         }

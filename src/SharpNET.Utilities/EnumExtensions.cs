@@ -36,7 +36,7 @@ namespace SharpNET.Utilities
             FieldInfo fi = value.GetType().GetField(stringValue);
             if (fi == null) return stringValue;
             var attributes = (DisplayAttribute[])fi.GetCustomAttributes(typeof(DisplayAttribute), false);
-            return attributes.Length > 0 ? attributes[0].Name : stringValue;
+            return attributes.Length > 0 ? attributes[0].Name : stringValue.FromCamelCase();
         }
 
         /// <summary>

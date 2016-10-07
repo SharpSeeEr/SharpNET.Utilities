@@ -32,7 +32,15 @@ namespace SharpNET.Utilities.Web.Helpers.Bootstrap
         }
         public static HtmlTag NavItem(this HtmlHelper htmlHelper, string label, string actionName, string controllerName, string areaName)
         {
-            string cssClass = htmlHelper.ViewContext.RouteData.Values["controller"].ToString() == controllerName ? "active" : "";
+            var routeData = htmlHelper.ViewContext.RouteData;
+            string cssClass = ""; // htmlHelper.ViewContext.RouteData.Values["controller"].ToString() == controllerName ? "active" : "";
+
+            if (actionName == routeData.Values["action"].ToString() &&
+                (string.IsNullOrEmpty(controllerName) || routeData.Values["controller"].ToString() == controllerName) &&
+                (string.IsNullOrEmpty(areaName) && areaName == routeData.Values["area"].ToString()))
+            {
+                cssClass = "active";
+            }
 
             var li = new HtmlTag("li")
                 .AddClass(cssClass);

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.Web", "S
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SharpNET.Core.EF", "SharpNET.Core.EF\SharpNET.Core.EF.xproj", "{5E31CC72-7085-4A54-B7FA-92270C5C5C80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.SimpleExcel", "SharpNET.Utilities.SimpleExcel\SharpNET.Utilities.SimpleExcel.csproj", "{B4CA96D5-5529-43FE-81FD-106D7CAE42F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.Test", "Test\SharpNET.Utilities.Test\SharpNET.Utilities.Test.csproj", "{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{5E31CC72-7085-4A54-B7FA-92270C5C5C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E31CC72-7085-4A54-B7FA-92270C5C5C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E31CC72-7085-4A54-B7FA-92270C5C5C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4CA96D5-5529-43FE-81FD-106D7CAE42F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4CA96D5-5529-43FE-81FD-106D7CAE42F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4CA96D5-5529-43FE-81FD-106D7CAE42F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4CA96D5-5529-43FE-81FD-106D7CAE42F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
