@@ -39,5 +39,10 @@ namespace SharpNET.Utilities.Reflection
             }
             return _lookup[type];
         }
+
+        public static PropertyInfoMap For<T>()
+        {
+            return For(typeof(T));
+        }
     }
 }

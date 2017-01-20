@@ -20,9 +20,9 @@ namespace SharpNET.Utilities.Web.Tags
             _label = label;
             RenderFromTop();
         }
-
+        
         private bool _writeWrapper = true;
-        protected override void writeHtml(HtmlTextWriter html)
+        protected override void WriteHtml(HtmlTags.HtmlTextWriter html)
         {
             if (!WillBeRendered()) return;
 
@@ -39,7 +39,7 @@ namespace SharpNET.Utilities.Web.Tags
             }
             else
             {
-                base.writeHtml(html);
+                base.WriteHtml(html);
             }
            
         }

@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.SimpleEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.Test", "Test\SharpNET.Utilities.Test\SharpNET.Utilities.Test.csproj", "{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SharpNET.Utilities.NETStandard", "SharpNET.Utilities.NETStandard\SharpNET.Utilities.NETStandard.xproj", "{881F1023-A912-42AA-ABDC-C0BD5647C83E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.EF", "SharpNET.EF\SharpNET.EF.csproj", "{E49C0FEE-0334-4041-B050-53E216AA1997}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{881F1023-A912-42AA-ABDC-C0BD5647C83E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881F1023-A912-42AA-ABDC-C0BD5647C83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881F1023-A912-42AA-ABDC-C0BD5647C83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881F1023-A912-42AA-ABDC-C0BD5647C83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E49C0FEE-0334-4041-B050-53E216AA1997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E49C0FEE-0334-4041-B050-53E216AA1997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E49C0FEE-0334-4041-B050-53E216AA1997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E49C0FEE-0334-4041-B050-53E216AA1997}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
