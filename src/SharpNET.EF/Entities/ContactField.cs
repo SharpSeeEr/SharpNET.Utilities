@@ -9,7 +9,7 @@ namespace SharpNET.EF.Entities
     public class ContactField : IEntity
     {
         public int Id { get; set; }
-        public int ContactId { get; set; }
+        //public int ContactId { get; set; }
 
         [MaxLength(25)]
         public string Label { get; set; }
@@ -17,6 +17,6 @@ namespace SharpNET.EF.Entities
         [MaxLength(1000)]
         public string Value { get; set; }
 
-        public Contact Contact { get; set; }
+        //public Contact Contact { get; set; }
     }
 }

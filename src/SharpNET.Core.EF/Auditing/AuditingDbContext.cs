@@ -92,12 +92,12 @@ namespace SharpNET.EF.Auditing
                 throw new ArgumentException("Type already registered for auditing with a different audit entity.", "entityType");
             }
 
-            if (!typeof(IAuditedEntity).IsAssignableFrom(entityType))
+            if (!typeof(IAuditedEntity).GetTypeInfo().IsAssignableFrom(entityType))
             {
                 throw new ArgumentException("Audited Entity does not implement " + typeof(IAuditedEntity).Name, "entityType");
             }
 
-            if (!typeof(IAuditEntity).IsAssignableFrom(auditType))
+            if (!typeof(IAuditEntity).GetTypeInfo().IsAssignableFrom(auditType))
             {
                 throw new ArgumentException("Audit Entity does not implement " + typeof(IAuditEntity).Name, "auditType");
             }

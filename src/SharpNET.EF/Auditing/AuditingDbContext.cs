@@ -9,6 +9,12 @@ namespace SharpNET.EF.Auditing
 {
     public class AuditingDbContext : DbContext
     {
+        public AuditingDbContext(string nameOrConnectionString)
+            :base(nameOrConnectionString)
+        {
+
+        }
+
         private static AuditTypeMapDictionary _auditMaps = new AuditTypeMapDictionary();
 
         public override int SaveChanges()

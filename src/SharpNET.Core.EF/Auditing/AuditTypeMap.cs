@@ -62,9 +62,9 @@ namespace SharpNET.EF.Auditing
         private void InitPropertyMap()
         {
             // Extract the list of properties to audit.
-            var auditProperties = AuditType.GetProperties().ToDictionary(x => x.Name);
+            var auditProperties = AuditType.GetRuntimeProperties().ToDictionary(x => x.Name);
 
-            foreach (var entityProperty in EntityType.GetProperties())
+            foreach (var entityProperty in EntityType.GetRuntimeProperties())
             {
                 var name = entityProperty.Name;
                 
@@ -81,9 +81,5 @@ namespace SharpNET.EF.Auditing
                 }
             }
         }
-
-        
-
-        
     }
 }
