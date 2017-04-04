@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SharpNET.EF.Auditing.Entities
 {
-    public interface IAuditedEntity
+    public interface IAuditedEntity : IEntity
     {
-        int Id { get; set; }
+        //int Id { get; set; }
         DateTime Created { get; set; }
         int CreatedById { get; set; }
         DateTime Modified { get; set; }

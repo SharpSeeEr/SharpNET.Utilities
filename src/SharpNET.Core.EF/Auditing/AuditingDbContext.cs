@@ -10,6 +10,12 @@ namespace SharpNET.EF.Auditing
     public class AuditingDbContext : DbContext
     {
         private static AuditTypeMapDictionary _auditMaps = new AuditTypeMapDictionary();
+        
+        public AuditingDbContext(DbContextOptions options)
+            :base(options)
+        {
+
+        }
 
         public override int SaveChanges()
         {

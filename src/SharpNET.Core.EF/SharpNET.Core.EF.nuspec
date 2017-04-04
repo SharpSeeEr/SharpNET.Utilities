@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SharpNET.EFCore</id>
+    <version>1.0.1.0</version>
+    <title>SharpNET.EFCore Utilities</title>
+    <authors>SharpSeeer</authors>
+    <owners>SharpSeeer</owners>
+    <licenseUrl>https://github.com/SharpSeeEr/SharpNET.Utilities/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SharpSeeEr/SharpNET.Utilities</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Basic Entities and an Auditing DBContext which provides automatic creation and update of history tables</description>
+    <releaseNotes>Initial release of SharpNET.Utilities to a NETStandard library.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>ef efcore utilities utils</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\netstandard1.5\SharpNET.Core.EF.dll" target="lib\netstandard1.5\" />
+    <file src="bin\Release\netstandard1.5\SharpNET.Core.EF.pdb" target="lib\netstandard1.5\" />
+  </files>
+</package>

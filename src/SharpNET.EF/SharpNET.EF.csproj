@@ -59,6 +59,7 @@
     <Compile Include="Auditing\Entities\IAuditEntity.cs" />
     <Compile Include="Auditing\EntityAuditingEnums.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DateTime2Convention.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\ContactEmail.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Entities\ContactPhone.cs" />
     <Compile Include="Entities\EntityNote.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="PersonNameSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

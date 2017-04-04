@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SharpNET.Utilities.NETStandard</id>
+    <version>1.0.1.0</version>
+    <title>SharpNET.Utilities.NETStandard</title>
+    <authors>SharpSeeer</authors>
+    <owners>SharpSeeer</owners>
+    <licenseUrl>https://github.com/SharpSeeEr/SharpNET.Utilities/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SharpSeeEr/SharpNET.Utilities</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A handy collection of utilities for general coding</description>
+    <releaseNotes>Initial release of SharpNET.Utilities to a NETStandard library.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>utilities utils</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\netstandard1.5\SharpNET.Utilities.NETStandard.dll" target="lib\netstandard1.5\" />
+    <file src="bin\Release\netstandard1.5\SharpNET.Utilities.NETStandard.pdb" target="lib\netstandard1.5\" />
+  </files>
+</package>

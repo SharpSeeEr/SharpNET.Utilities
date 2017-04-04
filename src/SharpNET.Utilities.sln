@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities", "SharpNET.Utilities\SharpNET.Utilities.csproj", "{A4DCD5C5-0D5A-430C-BC6B-B1001015791F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.Web", "SharpNET.Utilities.Web\SharpNET.Utilities.Web.csproj", "{898CF253-8E2B-464A-8727-C73257BC78BC}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SharpNET.Core.EF", "SharpNET.Core.EF\SharpNET.Core.EF.xproj", "{5E31CC72-7085-4A54-B7FA-92270C5C5C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpNET.Core.EF", "SharpNET.Core.EF\SharpNET.Core.EF.csproj", "{5E31CC72-7085-4A54-B7FA-92270C5C5C80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.SimpleExcel", "SharpNET.Utilities.SimpleExcel\SharpNET.Utilities.SimpleExcel.csproj", "{B4CA96D5-5529-43FE-81FD-106D7CAE42F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.Utilities.Test", "Test\SharpNET.Utilities.Test\SharpNET.Utilities.Test.csproj", "{091731A8-3AAD-45AC-8F8D-5B8A22FBA98C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SharpNET.Utilities.NETStandard", "SharpNET.Utilities.NETStandard\SharpNET.Utilities.NETStandard.xproj", "{881F1023-A912-42AA-ABDC-C0BD5647C83E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpNET.Utilities.NETStandard", "SharpNET.Utilities.NETStandard\SharpNET.Utilities.NETStandard.csproj", "{881F1023-A912-42AA-ABDC-C0BD5647C83E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNET.EF", "SharpNET.EF\SharpNET.EF.csproj", "{E49C0FEE-0334-4041-B050-53E216AA1997}"
 EndProject

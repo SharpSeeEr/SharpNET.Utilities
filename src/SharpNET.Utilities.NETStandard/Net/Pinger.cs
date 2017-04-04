@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace SharpNET.Utilities.Net
 {
@@ -29,17 +30,34 @@ namespace SharpNET.Utilities.Net
             public int StatusCode { get; protected set; }
         }
 
-        public static PingStatus Ping(string deviceName)
+        /// <summary>
+        /// Ping a network device using default settings
+        /// </summary>
+        /// <param name="deviceName">Name of the network device to ping</param>
+        /// <returns>PingStatus object</returns>
+        public static async Task<PingStatus> PingAsync(string deviceName)
         {
-            return Ping(deviceName, new PingerOptions());
+            return await PingAsync(deviceName, new PingerOptions());
         }
 
-        public static PingStatus Ping(string deviceName, int timeout)
+        /// <summary>
+        /// Ping a network device with a specific timeout
+        /// </summary>
+        /// <param name="deviceName">Name of the network device to ping</param>
+        /// <param name="timeout">Timeout for the ping in milliseconds</param>
+        /// <returns>PingStatus object</returns>
+        public static async Task<PingStatus> PingAsync(string deviceName, int timeout)
         {
-            return Ping(deviceName, new PingerOptions() { Timeout = timeout });
+            return await PingAsync(deviceName, new PingerOptions() { Timeout = timeout });
         }
 
-        public static PingStatus Ping(string deviceName, PingerOptions options)
+        /// <summary>
+        /// Ping a network device with specific options
+        /// </summary>
+        /// <param name="deviceName">Name of the network device to ping</param>
+        /// <param name="options">PingerOptions object</param>
+        /// <returns>PingStatus object</returns>
+        public static async Task<PingStatus> PingAsync(string deviceName, PingerOptions options)
         {
             Ping pinger = new Ping();
             PingOptions pingOptions = new PingOptions() { DontFragment = options.DontFragment };
@@ -55,7 +73,7 @@ namespace SharpNET.Utilities.Net
 
             try
             {
-                PingReply reply = pinger.Send(deviceName, options.Timeout, buffer, pingOptions);
+                PingReply reply = await pinger.SendPingAsync(deviceName, options.Timeout, buffer, pingOptions);
                 if (reply.Status == IPStatus.Success)
                 {
                     //Ping was successful
@@ -70,13 +88,20 @@ namespace SharpNET.Utilities.Net
             }
         }
 
-        public static void PingUntilDown(string deviceName, long timeout, int interval)
+        /// <summary>
+        /// Pings the given device until a success result is received.
+        /// </summary>
+        /// <param name="deviceName">Name of the network device to ping</param>
+        /// <param name="timeout">Max amount of time to wait for a failure, in milliseconds</param>
+        /// <param name="interval">Number of milliseconds to wait betweek pings</param>
+        public static async void PingUntilDownAsync(string deviceName, long timeout, int interval)
         {
             var timer = new Stopwatch();
             timer.Start();
             while (true)
             {
-                if (!Ping(deviceName).Success)
+                var result = await PingAsync(deviceName);
+                if (!result.Success)
                 {
                     return;
                 }
@@ -85,13 +110,20 @@ namespace SharpNET.Utilities.Net
             }
         }
 
-        public static void PingUntilUp(string deviceName, long timeout, int interval)
+        /// <summary>
+        /// Pings the given device until a success result is received.
+        /// </summary>
+        /// <param name="deviceName">Name of the network device to ping</param>
+        /// <param name="timeout">Max amount of time to wait for a success, in milliseconds</param>
+        /// <param name="interval">Number of milliseconds to wait betweek pings</param>
+        public static async void PingUntilUpAsync(string deviceName, long timeout, int interval)
         {
             var timer = new Stopwatch();
             timer.Start();
             while (true)
             {
-                if (Ping(deviceName).Success)
+                var result = await PingAsync(deviceName);
+                if (result.Success)
                 {
                     return;
                 }
